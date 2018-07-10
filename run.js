@@ -43,6 +43,7 @@ var wss = new WebSocketServer({
 });
 
 wss.on("connection", function(wsConnect) {
+  console.log(wsConnect);
   wsConnect.on("message", function(message) {
     console.log(message);
     wsConnect.send("reply");
