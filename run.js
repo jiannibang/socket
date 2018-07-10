@@ -48,6 +48,7 @@ try {
       wsConnect.send("reply");
     });
   });
+  console.log("init success");
 } catch (error) {
   console.log(error);
 }
