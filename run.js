@@ -4,7 +4,7 @@ try {
 
   // you'll probably load configuration from config
   var cfg = {
-    ssl: true,
+    ssl: false,
     port: 8080,
     ssl_key: "2_archeryscorecalculator.com.key",
     ssl_cert: "1_archeryscorecalculator.com_bundle.crt"
