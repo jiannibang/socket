@@ -47,7 +47,6 @@ var wss = new WebSocketServer({
 wss.on("connection", function(wsConnect) {
   wsConnect.on("message", function(message) {
     let { type, data } = JSON.parse(message);
-    console.log(playerService);
     switch (type) {
       case "login":
         playerService.newPlayer(data);
@@ -58,6 +57,5 @@ wss.on("connection", function(wsConnect) {
         break;
     }
     wsConnect.send(JSON.stringify(playerService.getPlayers()));
-    console.log(message);
   });
 });
