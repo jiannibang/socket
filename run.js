@@ -6,8 +6,8 @@ var fs = require("fs");
 var cfg = {
   ssl: true,
   port: 8080,
-  ssl_key: "ssl.key",
-  ssl_cert: "ssl.crt"
+  ssl_key: "2_archeryscorecalculator.com.key",
+  ssl_cert: "1_archeryscorecalculator.com_bundle.crt"
 };
 
 var httpServ = cfg.ssl ? require("https") : require("http");
