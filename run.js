@@ -1,10 +1,10 @@
 "use strict";
 
 var fs = require("fs");
-
+try {
 // you'll probably load configuration from config
 var cfg = {
-  ssl: true,
+  ssl: false,
   port: 8080,
   ssl_key: "2_archeryscorecalculator.com.key",
   ssl_cert: "1_archeryscorecalculator.com_bundle.crt"
@@ -20,7 +20,6 @@ var app = null;
 var processRequest = function(req, res) {
   res.writeHead(200);
   res.end("All glory to WebSockets!\n");
-  console.log("got you");
 };
 
 if (cfg.ssl) {
@@ -44,9 +43,11 @@ var wss = new WebSocketServer({
 });
 
 wss.on("connection", function(wsConnect) {
-  console.log(wsConnect);
   wsConnect.on("message", function(message) {
     console.log(message);
     wsConnect.send("reply");
   });
 });
+}catch(err){
+console.log(err)
+}
