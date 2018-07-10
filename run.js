@@ -20,6 +20,7 @@ var app = null;
 var processRequest = function(req, res) {
   res.writeHead(200);
   res.end("All glory to WebSockets!\n");
+  console.log("got you");
 };
 
 if (cfg.ssl) {
