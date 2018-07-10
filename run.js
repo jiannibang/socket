@@ -1,6 +1,9 @@
 "use strict";
 
+import { playerServiceClass } from "./scripts/players";
 var fs = require("fs");
+
+let playerService = new playerServiceClass();
 
 var cfg = {
   ssl: false,
@@ -43,7 +46,18 @@ var wss = new WebSocketServer({
 
 wss.on("connection", function(wsConnect) {
   wsConnect.on("message", function(message) {
+    let { type, data } = JSON.parse(message);
+    console.log(playerService);
+    switch (type) {
+      case "login":
+        playerService.newPlayer(data);
+        break;
+      case "move":
+        playerService.movePlayer(data);
+      default:
+        break;
+    }
+    wsConnect.send(JSON.stringify(playerService.getPlayers()));
     console.log(message);
-    wsConnect.send("reply");
   });
 });
