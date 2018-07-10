@@ -1,8 +1,7 @@
 "use strict";
 
 var fs = require("fs");
-try {
-// you'll probably load configuration from config
+
 var cfg = {
   ssl: false,
   port: 8080,
@@ -48,6 +47,3 @@ wss.on("connection", function(wsConnect) {
     wsConnect.send("reply");
   });
 });
-}catch(err){
-console.log(err)
-}
