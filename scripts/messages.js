@@ -38,10 +38,10 @@ const messagesService = {
         if (ws.isAlive === false) return ws.terminate();
         let changedPlayers = JSON.stringify(playerService.getChangedPlayers());
         ws.send(changedPlayers);
-        playerService.clearChangedPlayer();
         ws.isAlive = false;
         ws.ping(noop);
       });
+      playerService.clearChangedPlayer();
     }, tickPeriod);
   }
 };
