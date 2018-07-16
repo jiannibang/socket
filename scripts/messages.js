@@ -36,7 +36,9 @@ const messagesService = {
     setInterval(function ping() {
       wss.clients.forEach(function each(ws) {
         if (ws.isAlive === false) return ws.terminate();
-        ws.send(JSON.stringify(playerService.getChangedPlayers()));
+        let changedPlayers = JSON.stringify(playerService.getChangedPlayers());
+        console.log(changedPlayers);
+        ws.send(changedPlayers);
         playerService.clearChangedPlayer();
         ws.isAlive = false;
         ws.ping(noop);
